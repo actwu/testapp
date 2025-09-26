@@ -3,6 +3,7 @@
 <head>
 <title>App Demo</title>
 <meta name="description" content="A demo app with Material Symbols icons, dynamic routing, and SEO-friendly paths.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200">
 <style>
@@ -100,36 +101,41 @@ border-radius:1rem 1rem 0 0;
 </button>
 </nav>
 <script>
+const base="/testapp"
+
 function render(path) {
 content.innerHTML=""
 switch(path) {
-case "/home":
+case base+"/home":
 content.insertAdjacentHTML("afterbegin","<h1>Home</h1><set><h2>Welcome</h2><p>This is your dashboard overview.</p></set>")
 break
-case "/create":
+case base+"/create":
 content.insertAdjacentHTML("afterbegin","<h1>Create</h1><set><h2>New Post</h2><p>Compose a new update for your area.</p></set>")
 break
-case "/notify":
+case base+"/notify":
 content.insertAdjacentHTML("afterbegin","<h1>Notifications</h1><set><h2>Alerts</h2><p>No new alerts right now. Check back later.</p></set>")
 break
-case "/profile":
+case base+"/profile":
 content.insertAdjacentHTML("afterbegin","<h1>Profile</h1><set><h2>User Settings</h2><p>Edit your account preferences here.</p></set>")
 break
 default:
 content.insertAdjacentHTML("afterbegin","<h1>Updates Near You</h1><set><h2>Power Maintenance</h2><p>Scheduled maintenance in your district tonight from 10 PM to 2 AM.</p></set><set><h2>Weather Alert</h2><p>Heavy rain expected tomorrow morning. Stay safe and plan ahead.</p></set>")
 }
 }
+
 function go(path) {
-history.pushState({}, "", path)
-render(path)
+history.pushState({}, "", base+path)
+render(base+path)
 }
-home.onclick=()=>go("/home")
-add.onclick=()=>go("/create")
-notify.onclick=()=>go("/notify")
-profile.onclick=()=>go("/profile")
+
+home.onmousedown=()=>go("/home")
+add.onmousedown=()=>go("/create")
+notify.onmousedown=()=>go("/notify")
+profile.onmousedown=()=>go("/profile")
+
 window.onpopstate=()=>render(location.pathname)
 window.onload=()=>render(location.pathname)
-window.onbeforeunload=()=>{}
+
 document.fonts.ready.then(()=>{
 document.querySelectorAll("[icon]").forEach(el=>{
 el.innerText=""
