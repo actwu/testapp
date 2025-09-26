@@ -102,8 +102,7 @@ border-radius:1rem 1rem 0 0;
 </nav>
 <script>
 const base="/testapp"
-
-function render(path) {
+const render=path=>{
 content.innerHTML=""
 switch(path) {
 case base+"/home":
@@ -122,20 +121,16 @@ default:
 content.insertAdjacentHTML("afterbegin","<h1>Updates Near You</h1><set><h2>Power Maintenance</h2><p>Scheduled maintenance in your district tonight from 10 PM to 2 AM.</p></set><set><h2>Weather Alert</h2><p>Heavy rain expected tomorrow morning. Stay safe and plan ahead.</p></set>")
 }
 }
-
-function go(path) {
+const go=path=>{
 history.pushState({}, "", base+path)
 render(base+path)
 }
-
 home.onmousedown=()=>go("/home")
 add.onmousedown=()=>go("/create")
 notify.onmousedown=()=>go("/notify")
 profile.onmousedown=()=>go("/profile")
-
 window.onpopstate=()=>render(location.pathname)
 window.onload=()=>render(location.pathname)
-
 document.fonts.ready.then(()=>{
 document.querySelectorAll("[icon]").forEach(el=>{
 el.innerText=""
