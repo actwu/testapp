@@ -4,8 +4,10 @@
 <title>App Demo</title>
 <meta name="description" content="A demo app with Material Symbols icons, dynamic routing, and SEO-friendly paths.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200&display=swap">
 <style>
 body {
 margin:0;
@@ -28,7 +30,6 @@ font-variation-settings:'FILL' 1,'wght' 400,'GRAD' 0,'opsz' 24;
 font-size:1.75rem;
 color:#fff;
 user-select:none;
-filter:brightness(0) invert(1);
 }
 button[icon-btn] {
 background:none;
@@ -100,7 +101,7 @@ border-radius:1rem 1rem 0 0;
 <span icon data-icon="notifications">🔔</span>
 </button>
 </nav>
-<script>
+<script defer>
 const base="/testapp"
 const render=path=>{
 content.innerHTML=""
